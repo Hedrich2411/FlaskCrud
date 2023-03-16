@@ -1,0 +1,29 @@
+{% extends 'layout.html' %} 
+
+{% block body %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <form action="/update/{{ employee.id }}" method="POST" class="card text-black">
+            <div class="mx-3 my-2">
+                <label for="name_input" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name_input" name="name" placeholder="Escribe tu Nombre" required value="{{ employee.name }}">
+            </div>
+            <div class="mx-3 my-2">
+                <label for="lastname_input" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="lastname_input" name="lastname" placeholder="Escribe tu Apellido" required value="{{ employee.lastname }}">
+            </div>
+            <div class="mx-3 my-2">
+                <label for="identification_input" class="form-label">Identificación</label>
+                <input type="text" class="form-control" id="identification_input" name="identification" placeholder="Escribe tu Identificación" required value="{{ employee.identification }}">
+            </div>
+            <div class="mx-3 my-2">
+                <label for="email_input" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="email_input" name="email" placeholder="Escribe tu Correo" required value="{{ employee.email }}">
+            </div>
+            
+            <button type="submit" class="btn btn-primary mx-3 my-2">Submit</button>
+        </form>
+</div>
+
+{% endblock %}

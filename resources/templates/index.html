@@ -1,0 +1,56 @@
+{% extends 'layout.html' %} 
+
+{% block body %}
+
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <form action="/new" method="POST" class="card text-black">
+            <div class="mx-3 my-2">
+                <label for="name_input" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name_input" name="name" placeholder="Escribe tu Nombre" required>
+            </div>
+            <div class="mx-3 my-2">
+                <label for="lastname_input" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="lastname_input" name="lastname" placeholder="Escribe tu Apellido" required>
+            </div>
+            <div class="mx-3 my-2">
+                <label for="identification_input" class="form-label">Identificación</label>
+                <input type="text" class="form-control" id="identification_input" name="identification" placeholder="Escribe tu Identificación" required>
+            </div>
+            <div class="mx-3 my-2">
+                <label for="email_input" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="email_input" name="email" placeholder="Escribe tu Correo" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary mx-3 my-2">Submit</button>
+        </form>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Identificación</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees%}
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.lastname }}</td>
+                    <td>{{ employee.identification }}</td>
+                    <td>{{ employee.email }}</td>
+
+                    <td><a href="{{ url_for('employees.update', id=employee.id) }}" class="btn btn-warning btn-sm rounded-0">Editar</a> <a href="{{ url_for('employees.delete', id=employee.id) }}" class="btn btn-danger btn-sm rounded-0">Eliminar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{% endblock %}
